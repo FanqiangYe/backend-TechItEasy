@@ -3,10 +3,13 @@ package com.example.techiteasybijles.controllers;
 import com.example.techiteasybijles.exceptions.RecordNotFoundException;
 import com.example.techiteasybijles.models.Television;
 import com.example.techiteasybijles.repositories.TelevisionRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -31,7 +34,7 @@ public class TelevisionsController {
         // maar als er wel een television gevonden wordt, dan staat de television in de Optional en kun je deze er uit
         Optional<Television> television = televisionRepository.findById(id);
         if (television.isEmpty()) {
-            throw new RecordNotFoundException("No television found with id: " + id);
+           throw new RecordNotFoundException("No television found with id: " + id);
 // Hoeft hier geen "else" te komen?
         }
         return ResponseEntity.ok().body(television.get());
