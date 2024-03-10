@@ -1,5 +1,7 @@
 package com.example.techiteasybijles.controllers;
 
+import com.example.techiteasybijles.dtos.TelevisionDto;
+import com.example.techiteasybijles.dtos.TelevisionInputDto;
 import com.example.techiteasybijles.models.Television;
 import com.example.techiteasybijles.services.TelevisionService;
 import org.springframework.http.ResponseEntity;
@@ -19,29 +21,29 @@ public class TelevisionsController {
 
 
     @GetMapping("/televisions")
-    public ResponseEntity <List<Television>> getAllTelevisions(){
+    public ResponseEntity <List<TelevisionDto>> getAllTelevisions(){
         return ResponseEntity.ok(televisionService.getTelevisions());
     }
 
     @GetMapping("/televisions/{id}")
-    public ResponseEntity<Television> getTelevision(@PathVariable Long id) {
+    public ResponseEntity<TelevisionDto> getTelevision(@PathVariable Long id) {
         // Haal de television met het gegeven id uit de database.
         // Het Optional datatype betekend "wel of niet". Als er geen television gevonden wordt, dan is de Optional empty,
         // maar als er wel een television gevonden wordt, dan staat de television in de Optional en kun je deze er uit
-        Television television = televisionService.getTelevision(id);
+        TelevisionDto television = televisionService.getTelevision(id);
         return ResponseEntity.ok(television);
     }
 
     // Wanneer je een klasse definieert in een programmeertaal zoals Java, kun je die
     // klasse gebruiken als een nieuw datatype om objecten van dat type te maken.
     @PostMapping("/televisions")
-    public ResponseEntity<Television> addTelevision (@RequestBody Television television) {
-        televisionService.saveTelevision(television);
-        return ResponseEntity.created(null).body(television);
+    public ResponseEntity<Television> addTelevision (@RequestBody TelevisionInputDto television) {
+        Television savedTelevision = televisionService.saveTelevision(television);
+        return ResponseEntity.created(null).body(savedTelevision);
     }
 
     @PutMapping("/televisions/{id}")
-    public ResponseEntity<Void> updateTelevison(@RequestBody Television television,
+    public ResponseEntity<Void> updateTelevison(@RequestBody TelevisionInputDto television,
                                                   @PathVariable Long id) {
             televisionService.updateTelevision(television, id);
             return ResponseEntity.noContent().build();
