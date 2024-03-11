@@ -115,6 +115,8 @@ public class TelevisionService {
         dto.setWifi(television.getWifi());
         dto.setVoiceControl(television.getVoiceControl());
         dto.setHdr(television.getHdr());
+        dto.setBluetooth(television.getBluetooth());
+        dto.setAmbiLight(television.getAmbiLight());
         return dto;
     }
 }
