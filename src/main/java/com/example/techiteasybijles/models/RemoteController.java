@@ -1,7 +1,11 @@
 package com.example.techiteasybijles.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name= "remote controllers")
 public class RemoteController {
@@ -19,30 +23,6 @@ public class RemoteController {
 
     public RemoteController() {
 
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCompatibleWIth() {
-        return compatibleWIth;
-    }
-
-    public void setCompatibleWIth(String compatibleWIth) {
-        this.compatibleWIth = compatibleWIth;
-    }
-
-    public String getBatteryType() {
-        return batteryType;
-    }
-
-    public void setBatteryType(String batteryType) {
-        this.batteryType = batteryType;
     }
 }
 
