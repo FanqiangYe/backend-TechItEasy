@@ -1,5 +1,6 @@
 package com.example.techiteasybijles.dtos;
 
+import com.example.techiteasybijles.models.RemoteController;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,6 +29,8 @@ public class TelevisionDto {
     private Boolean ambiLight;
     private Integer originalStock;
     private Integer sold;
+    private RemoteController remoteController;
+
 
     public TelevisionDto(String brand, String name, Double price,
                       Double availableSize, Double refreshRate, String screenType,

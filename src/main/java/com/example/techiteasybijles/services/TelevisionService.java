@@ -5,7 +5,9 @@ package com.example.techiteasybijles.services;
 import com.example.techiteasybijles.dtos.TelevisionDto;
 import com.example.techiteasybijles.dtosInput.TelevisionInputDto;
 import com.example.techiteasybijles.exceptions.RecordNotFoundException;
+import com.example.techiteasybijles.models.RemoteController;
 import com.example.techiteasybijles.models.Television;
+import com.example.techiteasybijles.repositories.RemoteControllerRepository;
 import com.example.techiteasybijles.repositories.TelevisionRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +19,12 @@ import java.util.Optional;
 public class TelevisionService {
 
     private final TelevisionRepository televisionRepository;
+    private final RemoteControllerRepository remoteControllerRepository;
 
-    public TelevisionService(TelevisionRepository televisionRepository) {
+    public TelevisionService(TelevisionRepository televisionRepository,
+                             RemoteControllerRepository remoteControllerRepository) {
         this.televisionRepository = televisionRepository;
+        this.remoteControllerRepository = remoteControllerRepository;
     }
 
     public List<TelevisionDto> getTelevisions() {
@@ -118,6 +123,19 @@ public class TelevisionService {
         dto.setBluetooth(television.getBluetooth());
         dto.setAmbiLight(television.getAmbiLight());
         return dto;
+    }
+
+    public void assignRemoteControllerToTelevision(Long televisionid, Long remotecontrollerid) {
+        Optional<Television> optionalTelevision = televisionRepository.findById(televisionid);
+        Optional<RemoteController> optionalRemoteController = remoteControllerRepository.findById(remotecontrollerid);
+        if (optionalTelevision.isEmpty() && optionalRemoteController.isEmpty()){
+          throw new RecordNotFoundException("Television of remote controller niet gevonden");
+        } else {
+            Television television = optionalTelevision.get();
+            RemoteController remoteController = optionalRemoteController.get();
+            television.setRemoteController(remoteController);
+            televisionRepository.save(television);
+        }
     }
 }
 

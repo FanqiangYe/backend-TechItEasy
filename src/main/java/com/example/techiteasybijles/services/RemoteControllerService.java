@@ -84,6 +84,7 @@ public class RemoteControllerService {
 
     private RemoteControllerDto remoteControllerToDto(RemoteController remoteController) {
         RemoteControllerDto dto = new RemoteControllerDto();
+        dto.setId(remoteController.getId());
         dto.setBrand(remoteController.getBrand());
         dto.setName(remoteController.getName());
         dto.setPrice(remoteController.getPrice());

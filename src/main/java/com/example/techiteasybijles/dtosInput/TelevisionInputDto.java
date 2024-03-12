@@ -3,6 +3,7 @@ package com.example.techiteasybijles.dtosInput;
 // filtert data
 // invoer van de data
 
+import com.example.techiteasybijles.models.RemoteController;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Getter;
@@ -29,13 +30,14 @@ public class TelevisionInputDto {
     private Boolean ambiLight;
     private Integer originalStock;
     private Integer sold;
+    private RemoteController remoteController;
 
 
     public TelevisionInputDto(String brand, String name, Double price,
                          Double availableSize, Double refreshRate, String screenType,
                          String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl,
                          Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock,
-                              Integer sold)
+                              Integer sold, RemoteController remoteController)
     {
         this.brand = brand;
         this.name = name;
@@ -52,6 +54,7 @@ public class TelevisionInputDto {
         this.ambiLight = ambiLight;
         this.originalStock = originalStock;
         this.sold = sold;
+        this.remoteController = remoteController;
     }
 }
 

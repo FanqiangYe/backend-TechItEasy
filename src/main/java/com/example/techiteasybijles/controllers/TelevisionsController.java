@@ -1,6 +1,7 @@
 package com.example.techiteasybijles.controllers;
 
 import com.example.techiteasybijles.dtos.TelevisionDto;
+import com.example.techiteasybijles.dtosInput.IdInputDto;
 import com.example.techiteasybijles.dtosInput.TelevisionInputDto;
 import com.example.techiteasybijles.models.Television;
 import com.example.techiteasybijles.services.TelevisionService;
@@ -38,8 +39,8 @@ public class TelevisionsController {
     // klasse gebruiken als een nieuw datatype om objecten van dat type te maken.
     @PostMapping("/televisions")
     public ResponseEntity<Television> addTelevision (@RequestBody TelevisionInputDto television) {
-        Television savedTelevision = televisionService.saveTelevision(television);
-        return ResponseEntity.created(null).body(savedTelevision);
+        Television newTelevision = televisionService.saveTelevision(television);
+        return ResponseEntity.created(null).body(newTelevision);
     }
 
     @PutMapping("/televisions/{id}")
@@ -55,4 +56,12 @@ public class TelevisionsController {
         televisionService.deleteTelevision(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/televisions/{televisionId}/remotecontroller")
+    public ResponseEntity<Void> assignRemoteController(@PathVariable Long televisionId,
+                                                       @RequestBody IdInputDto remotecontrollerId){
+        televisionService.assignRemoteControllerToTelevision(televisionId, remotecontrollerId.getId());
+        return ResponseEntity.noContent().build();
+    }
+
 }
