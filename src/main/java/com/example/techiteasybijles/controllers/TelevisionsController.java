@@ -1,7 +1,7 @@
 package com.example.techiteasybijles.controllers;
 
 import com.example.techiteasybijles.dtos.TelevisionDto;
-import com.example.techiteasybijles.dtos.TelevisionInputDto;
+import com.example.techiteasybijles.dtosInput.TelevisionInputDto;
 import com.example.techiteasybijles.models.Television;
 import com.example.techiteasybijles.services.TelevisionService;
 import org.springframework.http.ResponseEntity;

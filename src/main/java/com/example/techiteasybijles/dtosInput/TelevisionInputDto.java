@@ -1,16 +1,21 @@
-package com.example.techiteasybijles.dtos;
+package com.example.techiteasybijles.dtosInput;
 
 // filtert data
 // invoer van de data
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
 public class TelevisionInputDto {
+    @NotNull
     private String brand;
+    @NotNull
     private String name;
+    @Positive
     private Double price;
     private Double availableSize;
     private Double refreshRate;
@@ -22,12 +27,15 @@ public class TelevisionInputDto {
     private Boolean hdr;
     private Boolean bluetooth;
     private Boolean ambiLight;
+    private Integer originalStock;
+    private Integer sold;
 
 
     public TelevisionInputDto(String brand, String name, Double price,
                          Double availableSize, Double refreshRate, String screenType,
                          String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl,
-                         Boolean hdr, Boolean bluetooth, Boolean ambiLight)
+                         Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock,
+                              Integer sold)
     {
         this.brand = brand;
         this.name = name;
@@ -42,6 +50,8 @@ public class TelevisionInputDto {
         this.hdr = hdr;
         this.bluetooth = bluetooth;
         this.ambiLight = ambiLight;
+        this.originalStock = originalStock;
+        this.sold = sold;
     }
 }
 

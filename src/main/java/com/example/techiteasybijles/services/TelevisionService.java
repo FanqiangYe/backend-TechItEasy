@@ -3,7 +3,7 @@ package com.example.techiteasybijles.services;
 // De reden dat we de servicelaag gebruiken, is zodat de controller clean blijft
 // Zorgt voor een georganiseerde project structuur, wat bruikbaarheid voor andere programmeurs verbetert
 import com.example.techiteasybijles.dtos.TelevisionDto;
-import com.example.techiteasybijles.dtos.TelevisionInputDto;
+import com.example.techiteasybijles.dtosInput.TelevisionInputDto;
 import com.example.techiteasybijles.exceptions.RecordNotFoundException;
 import com.example.techiteasybijles.models.Television;
 import com.example.techiteasybijles.repositories.TelevisionRepository;

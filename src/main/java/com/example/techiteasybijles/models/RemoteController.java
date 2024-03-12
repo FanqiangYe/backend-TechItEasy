@@ -12,12 +12,20 @@ public class RemoteController {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String compatibleWIth;
+    private String compatibleWith;
     private String batteryType;
+    private String name;
+    private String brand;
+    private Double price;
+    private Integer originalStock;
+    // Verwijs naar de property van RemoteController -> remoteController <-
+    // Maakt de class waarin de property staat de "owner" van de relation
+    @OneToOne(mappedBy = "remoteController")
+    private Television television;
 
     public RemoteController(Long id, String compatibleWIth, String batteryType) {
         this.id = id;
-        this.compatibleWIth = compatibleWIth;
+        this.compatibleWith = compatibleWIth;
         this.batteryType = batteryType;
     }
 
