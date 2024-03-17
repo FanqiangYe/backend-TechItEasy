@@ -109,6 +109,7 @@ public class TelevisionService {
 
     private TelevisionDto TelevisionToDto(Television television) {
         TelevisionDto dto = new TelevisionDto();
+        dto.setId(television.getId());
         dto.setBrand(television.getBrand());
         dto.setName(television.getName());
         dto.setPrice(television.getPrice());
@@ -122,12 +123,13 @@ public class TelevisionService {
         dto.setHdr(television.getHdr());
         dto.setBluetooth(television.getBluetooth());
         dto.setAmbiLight(television.getAmbiLight());
+        dto.setRemoteController(television.getRemoteController());
         return dto;
     }
 
-    public void assignRemoteControllerToTelevision(Long televisionid, Long remotecontrollerid) {
-        Optional<Television> optionalTelevision = televisionRepository.findById(televisionid);
-        Optional<RemoteController> optionalRemoteController = remoteControllerRepository.findById(remotecontrollerid);
+    public void assignRemoteControllerToTelevision(Long televisionId, Long remotecontrollerId) {
+        Optional<Television> optionalTelevision = televisionRepository.findById(televisionId);
+        Optional<RemoteController> optionalRemoteController = remoteControllerRepository.findById(remotecontrollerId);
         if (optionalTelevision.isEmpty() && optionalRemoteController.isEmpty()){
           throw new RecordNotFoundException("Television of remote controller niet gevonden");
         } else {

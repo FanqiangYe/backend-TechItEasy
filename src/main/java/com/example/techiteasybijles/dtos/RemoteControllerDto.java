@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RemoteControllerDto {
+
     private Long id;
     private String compatibleWith;
     private String batteryType;

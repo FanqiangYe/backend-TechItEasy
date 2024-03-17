@@ -1,5 +1,6 @@
 package com.example.techiteasybijles.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +21,7 @@ public class RemoteController {
     private Integer originalStock;
     // Verwijs naar de property van RemoteController -> remoteController <-
     // Maakt de class waarin de property staat de "owner" van de relation
+    @JsonBackReference
     @OneToOne(mappedBy = "remoteController")
     private Television television;
 
